@@ -30,8 +30,8 @@ var slotMachine = {
     this.reels.forEach(function displayReel(reel) {
       const rightReel = Object.create(reel);
       const leftReel = Object.create(reel);
-      rightReel.position = reel.position + 1;
-      leftReel.position = reel.position - 1;
+      rightReel.position = (reel.symbols.length + reel.position + 1) % reel.symbols.length;
+      leftReel.position = (reel.symbols.length + reel.position - 1) % reel.symbols.length;
 
       console.log(leftReel.display(), reel.display(), rightReel.display());
     });
